@@ -3,7 +3,7 @@ import {Component} from "react"
 import Header from "../Header"
 import SearchInput from "../SearchInput";
 import PriceRange from "../PriceRange";
-
+import BookItem from "../BookItem";
 import "./index.css"
 
 const response = {
@@ -44,12 +44,15 @@ class BookList extends Component {
                 <div className = "book-list-container">
                     <div className = "book-list-content-container">
                         <SearchInput/>
-                        <PriceRange/>                        
                         <h1 className="book-items-heading">Books</h1>
+                        <PriceRange/>                        
                         <div className = "book-list-container">
-                            <div >
-                                BookItems 
-                            </div>
+                            <BookItem/>
+                            <BookItem/>
+                            <BookItem/>
+                            <BookItem/>
+                            <BookItem/>
+                            <BookItem/>
                         </div>
                     </div>                    
                 </div>

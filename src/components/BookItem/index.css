@@ -1,0 +1,26 @@
+.book-item-container {
+    flex: 1 1 30%;
+    text-align: center;
+    box-sizing: "border-box";
+    padding: 0 10px;
+}
+
+.book-image{
+    width: 250px;
+}
+.book-title{
+    font-size: 18px;
+    text-wrap: wrap;
+    margin: 2px;
+
+}
+.book-subtitle{
+    font-size: 15px;
+    text-wrap: wrap;
+    margin: 2px;
+}
+.book-price{
+    font-size: 18px;
+    margin: 2px;
+    font-weight: bold;
+}
