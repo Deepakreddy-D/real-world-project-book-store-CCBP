@@ -129,7 +129,8 @@ Reference: https://api.itbook.store
 
 - Loader (react-loader-spinner)
 - Icons (react-icons)
-- Range Slider (rc-slider)
+- Range Slider (rc-slider) 
+- React Tooltip (rc-tooltip) for tooltips in Range slider
 - React Router (react-router-dom v5.2.0)
 
 ### Future Improvements
