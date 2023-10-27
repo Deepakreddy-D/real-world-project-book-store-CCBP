@@ -50,8 +50,8 @@ class BookDetails extends Component {
         <div className="book-details-container">
           <div className="book-details-content-container">
             <div className="book-basic-details-container">
-              <div className="book-details-image">
-                <img src={image} alt={title} className = "book-image"/>
+              <div className="book-details-image-container">
+                <img src={image} alt={title} className = "book-details-image"/>
               </div>
               <div className="book-other-basic-details">
                 <h1 className="book-details-heading book-details-title">

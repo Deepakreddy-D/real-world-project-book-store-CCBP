@@ -10,7 +10,6 @@ import NotFound from "./components/NotFound"
 
 
 import './App.css';
-
 class App extends Component {
   render(){
     return (
@@ -21,8 +20,9 @@ class App extends Component {
         <Route exact path ="/cart" component = {Cart}/>
         <Route exact path ="/checkout" component = {Checkout}/>
         <Route exact path ="/not-found" component = {NotFound}/>
+
         <Redirect to = "/not-found"/>
-      </Switch>
+      </Switch>      
     );
   }
 }

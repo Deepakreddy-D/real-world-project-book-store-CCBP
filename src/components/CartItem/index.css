@@ -6,7 +6,18 @@
 }
 
 .book-image{
-    width: 200px;
+    width: 40%;
+    max-width: 200px;
+}
+
+.book-subtitle{
+    display: none
+}
+
+@media screen and (min-width: 768px) {
+    .book-subtitle {
+      display: inline;
+    }
 }
 
 .product-info-container{
@@ -59,6 +70,6 @@
     flex-direction: row;
     justify-content: end;
     align-items: center;
-    padding: 20px
+    padding: 20px;
 }
 

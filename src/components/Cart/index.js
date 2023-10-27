@@ -25,9 +25,9 @@ class Cart extends Component {
                                 <h1 className="cart-price">$ %XYZ%</h1>
                             </div>
                             <p className="order-text">(inclusive of all taxes)</p>
-                                <button className="checkout-button">
-                                    Checkout
-                                </button>
+                            <button className="checkout-button">
+                                Checkout
+                            </button>
                         </div>
                     </div>
                 </div>             
