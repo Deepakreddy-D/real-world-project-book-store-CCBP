@@ -46,26 +46,49 @@ const apiStatusConstants ={
     failure: "FAILURE"
 }
 
-const book_list_url = "https://api.itbook.store/1.0/new";
 
 class BookList extends Component {
     state = {
         apiStatus: apiStatusConstants.initial,
-        booksData: []
+        booksData: [],
+        priceRangeValue: [0, 0]
     } 
 
   componentDidMount() {
     this.setState({apiStatus: apiStatusConstants.inProgress})
-    this.getBooks();
+    this.getBooks("");
   }
 
-  getBooks = async () => {
-    const response = await fetch(book_list_url)
+  getPriceRange = () => {
+    const {booksData, priceRangeValue} = this.state
+    let [minPrice, maxPrice]= priceRangeValue
+    booksData.map((eachBook) => {
+      const price = parseFloat(eachBook.price.slice(1))
+      if (price < minPrice){
+        minPrice = price;
+      } else if (price > maxPrice){
+        maxPrice = price;
+      }
+      return null;
+    })
+    this.setState({priceRangeValue: [Math.round(minPrice), Math.round(maxPrice)]})
+  }
+
+  getBooks = async (searchQuery) => {
+    let bookListUrl = "";
+    if (searchQuery === ""){
+      bookListUrl = "https://api.itbook.store/1.0/new"
+    }
+    else{
+      bookListUrl = `https://api.itbook.store/1.0/search/${searchQuery}`
+    }
+
+    console.log(bookListUrl)
+    const response = await fetch(bookListUrl)
     if (response.ok) {
         const jsonResponse = await response.json();
-        this.setState({apiStatus: apiStatusConstants.success, booksData: jsonResponse.books})
-        console.log(jsonResponse.books)
-    } else if (response.status === 404) {
+        this.setState({apiStatus: apiStatusConstants.success, booksData: jsonResponse.books}, this.getPriceRange())
+      } else if (response.status === 404) {
         this.setState({apiStatus: apiStatusConstants.failure})
     }
   };
@@ -75,16 +98,17 @@ class BookList extends Component {
   }
 
   renderSuccessView(){
-    const {booksData} = this.state
+    const {booksData, priceRangeValue} = this.state
     return (
         <>
             <h1 className="book-items-heading">Books</h1>
-            <PriceRange />
-            <div className="book-list-container">
-            {booksData.map((eachbook) => (
-                <BookItem bookItemDetails={eachbook}/>
-            ))}                
-            </div>
+            <PriceRange sliderPositions = {priceRangeValue} />
+            <ul className="book-list-container">
+                {booksData.map((eachBook) => (
+                    <BookItem key = {eachBook.isbn13}  bookItemDetails={eachBook}/>
+                ))}    
+            </ul>
+            
         </>
     )
   }
@@ -111,7 +135,7 @@ class BookList extends Component {
         <Header />
         <div className="book-list-container">
           <div className="book-list-content-container">
-            <SearchInput />
+            <SearchInput searchBooks = {this.getBooks}/>
             {this.renderResults()}
           </div>
         </div>

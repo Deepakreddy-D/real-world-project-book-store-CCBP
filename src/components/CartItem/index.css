@@ -5,17 +5,17 @@
     justify-content: stretch;
 }
 
-.book-image{
+.cart-book-image{
     width: 40%;
     max-width: 200px;
 }
 
-.book-subtitle{
+.cart-book-subtitle{
     display: none
 }
 
 @media screen and (min-width: 768px) {
-    .book-subtitle {
+    .cart-book-subtitle {
       display: inline;
     }
 }

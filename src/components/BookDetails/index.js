@@ -6,6 +6,13 @@ import ErrorMessage from "../ErrorMessage";
 
 import "./index.css";
 
+const apiStatusConstants ={
+  initial: "INITIAL",
+  inProgress: "IN_PROGRESS",
+  success: "SUCCESS",
+  failure: "FAILURE"
+}
+
 const book = {
   error: "0",
   title: "Securing DevOps",
@@ -42,7 +49,29 @@ const {
   pages,
 } = book;
 
+const bookUrl = "https://api.itbook.store/1.0/books"
+
 class BookDetails extends Component {
+  state = {
+    apiStatus:apiStatusConstants.initial,
+    bookDetailsData: {}
+  }
+
+  getBookDetails = async () => {
+    const response = await fetch(bookUrl)
+    if (response.ok) {
+        const jsonResponse = await response.json();
+        this.setState({apiStatus: apiStatusConstants.success, booksData: jsonResponse.books}, this.getPriceRange())
+      } else if (response.status === 404) {
+        this.setState({apiStatus: apiStatusConstants.failure})
+    }
+  }
+
+
+  componentDidMount(){
+
+  }
+
   render() {
     return (
       <>

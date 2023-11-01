@@ -7,6 +7,7 @@ import "rc-tooltip/assets/bootstrap_white.css";
 import "./index.css";
 
 const PriceRange = (props) => {
+  const {sliderPositions} = props;
   const tipHandleRender = (node, handleProps) => {
     return (
       <Tooltip
@@ -29,9 +30,9 @@ const PriceRange = (props) => {
         <h1 className="price-range-heading">Filter by Price</h1>
         <div className="slider-container">
             <Slider
-            value={[20, 60]}
+            value={sliderPositions}
             min={0}
-            max={100}
+            max={Math.ceil(sliderPositions[1]/100)*100}
             range
             pushable={true}
             allowCross={false}

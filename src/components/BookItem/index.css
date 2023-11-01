@@ -30,3 +30,12 @@
     margin: 5px;
     font-weight: bold;
 }
+
+.book-item-nav-link{
+    text-decoration: none;
+    color: black; 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+  }
