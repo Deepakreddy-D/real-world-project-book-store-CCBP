@@ -76,6 +76,7 @@ class BookList extends Component {
       } else if (response.status === 404) {
         this.setState({apiStatus: apiStatusConstants.failure})
     }
+    console.log("fetched")
   };
 
   renderLoadingView(){
