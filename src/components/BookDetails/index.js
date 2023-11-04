@@ -49,7 +49,6 @@ const {
   pages,
 } = book;
 
-const bookUrl = "https://api.itbook.store/1.0/books"
 
 class BookDetails extends Component {
   state = {
@@ -58,10 +57,11 @@ class BookDetails extends Component {
   }
 
   getBookDetails = async () => {
+    const bookUrl = `https://api.itbook.store/1.0/books${this.key}`
     const response = await fetch(bookUrl)
     if (response.ok) {
         const jsonResponse = await response.json();
-        this.setState({apiStatus: apiStatusConstants.success, booksData: jsonResponse.books}, this.getPriceRange())
+        this.setState({apiStatus: apiStatusConstants.success, bookDetailsData: jsonResponse})
       } else if (response.status === 404) {
         this.setState({apiStatus: apiStatusConstants.failure})
     }
@@ -69,7 +69,8 @@ class BookDetails extends Component {
 
 
   componentDidMount(){
-
+    this.setState({apiStatus: apiStatusConstants.inProgress})
+    this.getBookDetails()
   }
 
   render() {
@@ -154,7 +155,6 @@ class BookDetails extends Component {
             <hr className="horizontal-rule" />
           </div>
         </div>
-        <Loader/>
         <ErrorMessage/>
       </>
     );
