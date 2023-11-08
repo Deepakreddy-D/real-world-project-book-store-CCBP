@@ -8,21 +8,55 @@ import Cart from "./components/Cart"
 import Checkout from "./components/Checkout"
 import NotFound from "./components/NotFound"
 
+import CartContext from "./context/CartContext";
 
 import './App.css';
-class App extends Component {
-  render(){
-    return (
-      <Switch>
-        <Route exact path ="/" component = {Home}/>
-        <Route exact path ="/books" component = {BookList}/>
-        <Route exact path ="/books/:id" component = {BookDetails}/>
-        <Route exact path ="/cart" component = {Cart}/>
-        <Route exact path ="/checkout" component = {Checkout}/>
-        <Route exact path ="/not-found" component = {NotFound}/>
 
-        <Redirect to = "/not-found"/>
-      </Switch>      
+class App extends Component {
+  state = {
+    cartList: [],
+  }
+
+  addToCart = (bookItem) => {
+    this.setState((prevState) => (
+      {cartList:[...prevState.cartList, {...bookItem, quantity: 1}]}
+      ), ()=> console.log(this.state.cartList))
+  }
+  increaseQuantity = (cartItem) => {}
+  decreaseQuantity = (cartItem) => {}
+  deleteFromCart = (cartItem) => {
+    this.setState((prevState) => (
+      {cartList: prevState.cartList.filter((eachCartItem) => (eachCartItem !== cartItem))}
+    ))
+  }
+  resetCart = () => {
+    this.setState({cartList: []})
+    // { item: {bookObject}, quantity: 1}
+  }
+
+
+  render(){
+    const cartList = this.state
+    return (
+      <CartContext.Provider 
+      value={{
+        cartList, 
+        addToCart: this.addToCart,
+        increaseQuantity: this.increaseQuantity,
+        decreaseQuantity: this.decreaseQuantity,
+        deleteFromCart: this.deleteFromCart,
+        resetCart: this.resetCart
+        }}>
+        <Switch>
+          <Route exact path ="/" component = {Home}/>
+          <Route exact path ="/books" component = {BookList}/>
+          <Route exact path ="/books/:id" component = {BookDetails}/>
+          <Route exact path ="/cart" component = {Cart}/>
+          <Route exact path ="/checkout" component = {Checkout}/>
+          <Route exact path ="/not-found" component = {NotFound}/>
+          <Redirect to = "/not-found"/>
+        </Switch>
+      </CartContext.Provider>   
     );
   }
 }

@@ -47,17 +47,17 @@ Frontend - ReactJS (React Router, Redux/React Context)
 
 **Home**
 
-| Component | Details                                         | State | API (IT Bookstore) |
-| --------- | ----------------------------------------------- | ----- | ------------------ |
-| Home      | Heading, Description, and "ExploreBooks" button | -     | -                  |
-| Header    | Links for pages Home, Book List, Cart           | -     | -                  |
+| Component | Details                                         | State               | API (IT Bookstore) |
+| --------- | ----------------------------------------------- | -----               | ------------------ |
+| Home      | Heading, Description, and "ExploreBooks" button | -                   | -                  |
+| Header    | Links for pages Home, Book List, Cart           | (Context Consumer)  | -                  |
 
 **Book List**
 
 | Component    | Details                                    | State                                 | API (IT Bookstore) |
 | ------------ | ------------------------------------------ | ------------------------------------- | ------------------ |
 | BookList     |                                            | apiStatus, booksData, priceRangeValue | /new               |
-| Header       | Links for pages Home, Book List, Cart      | -                                     | -                  |
+| Header       | Links for pages Home, Book List, Cart      | (Context Consumer)                    | -                  |
 | SearchInput  | Search (by title, author)                  | searchInputValue                      | /search/{query}    |
 | PriceRange   | Filter (by price)                          | -                                     | -                  |
 | BookItem     | Book Items (title, subtitle, image, price) | -                                     | -                  |
@@ -69,7 +69,7 @@ Frontend - ReactJS (React Router, Redux/React Context)
 | Component    | Details                                                                                                            | State                      | API (IT Bookstore) |
 | ------------ | ------------------------------------------------------------------------------------------------------------------ | -------------------------- | ------------------ |
 | BookDetails  | Book detailed Information -  image, title, subtitle, price, description, etc., “Add to cart” Button, “Back” button | apiStatus, bookDetailsData | /books/{isbn}      |
-| Header       | Links for pages Home, Book List, Cart                                                                              | -                          | -                  |
+| Header       | Links for pages Home, Book List, Cart                                                                              | (Context Consumer)         | -                  |
 | Loader       |                                                                                                                    | -                          | -                  |
 | ErrorMessage |                                                                                                                    | -                          | -                  |
 
@@ -78,7 +78,7 @@ Frontend - ReactJS (React Router, Redux/React Context)
 | Components | Details                                                         | State              | API (IT Bookstore) |
 | ---------- | --------------------------------------------------------------- | ------------------ | ------------------ |
 | Cart       | Cart Items, “Remove” Button, Order Summary, “Checkout” Button   | (Context Consumer) | -                  |
-| Header     | Links for pages Home, Book List, Cart                           | -                  | -                  |
+| Header     | Links for pages Home, Book List, Cart                           | (Context Consumer) | -                  |
 | CartItem   | Book Detailed Info (image, title, subtitle, price, description) | (Context Consumer) | -                  |
 
 **Checkout**
@@ -90,10 +90,10 @@ Frontend - ReactJS (React Router, Redux/React Context)
 
 **Not Found**
 
-| Components | Details                               | State  | API (IT Bookstore)                    |
-| ---------- | ------------------------------------- | ------ | ------------------------------------- |
-| NotFound   | -                                     | -      | -                                     |
-| Header     | Links for pages Home, Book List, Cart | Header | Links for pages Home, Book List, Cart |
+| Components | Details                               | State              | API (IT Bookstore)                    |
+| ---------- | ------------------------------------- | ------             | ------------------------------------- |
+| NotFound   | -                                     | -                  | -                                     |
+| Header     | Links for pages Home, Book List, Cart | (Context Consumer) | Links for pages Home, Book List, Cart |
 
 **App**
 
@@ -104,7 +104,7 @@ Frontend - ReactJS (React Router, Redux/React Context)
 ### Guidelines
 
 - Followed Github Guidelines
-  - Made the commits often and made sure the commit messages are concise and specfic
+  - Made the commits often and made sure the commit messages are concise and specific
   - Included a README file for explaining the project setup, usage instructions, and any additional information.
 - Followed Clean Code Guidelines
 - The repo is well-organized and easy to navigate
