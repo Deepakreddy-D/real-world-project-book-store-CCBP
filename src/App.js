@@ -26,11 +26,9 @@ class App extends Component {
   increaseQuantity = (cartItem) => {};
   decreaseQuantity = (cartItem) => {};
   deleteFromCart = (cartItem) => {
-    this.setState((prevState) => ({
-      cartList: prevState.cartList.filter(
-        (eachCartItem) => eachCartItem !== cartItem
-      ),
-    }));
+    this.setState((prevState) => (
+      {cartList: prevState.cartList.filter((eachCartItem) => eachCartItem.isbn13 !== cartItem.isbn13)}
+    ));
   };
   resetCart = () => {
     this.setState({ cartList: [] });

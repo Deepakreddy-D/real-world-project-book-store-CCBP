@@ -60,10 +60,12 @@ class BookDetails extends Component {
       pages,
     } = bookDetailsData;
 
+
     return (
       <CartContext.Consumer>
         {(value) => {
-          const { addToCart } = value;
+          const { cartList, addToCart } = value;
+          let isAddedToCart = cartList.find(eachCartItem => eachCartItem.isbn13 === this.state.bookDetailsData.isbn13)
           const onClickAddToCart = () => {
             addToCart({...this.state.bookDetailsData, quantity: 1})
           }
@@ -90,11 +92,12 @@ class BookDetails extends Component {
                     <hr className="horizontal-rule display" />
                     <p className="book-details-price">{price}</p>
                     <div className="buttons-container">
-                      <button
+                    <button
                         className="book-details-button"
                         onClick={onClickAddToCart}
+                        disabled={isAddedToCart}
                       >
-                        Add to Cart
+                        {isAddedToCart ? "Added to Cart" : "Add to Cart"}
                       </button>
                     </div>
                   </div>

@@ -27,6 +27,12 @@
   flex-basis: 50%;
 }
 
+.continue-shopping-button-link{
+  display:flex;
+  justify-content:center;
+  text-decoration: none;
+}
+
 .order-content-container {
   width: 90%;
   align-self: center;
