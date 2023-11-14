@@ -17,6 +17,8 @@
   }
 
 .cart-container {
+  display:flex;
+  flex-direction: column;
   border-width: 1px solid gray;
   margin-top: 0;
   padding-left: 0;
@@ -75,6 +77,11 @@
 .checkout-button:hover {
   background-color: #0f0f11;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.remove-button{
+  margin: 10px;
+  align-self: center;
 }
 
 .cart-price{

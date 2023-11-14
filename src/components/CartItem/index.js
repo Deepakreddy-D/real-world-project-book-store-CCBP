@@ -3,19 +3,10 @@ import {FaTrash} from "react-icons/fa"
 
 import "./index.css"
 
-const sample_data = {
-    "title": "Designing Across Senses",
-    "subtitle": "A Multimodal Approach to Product Design",
-    "isbn13": "9781491954249",
-    "price": "$27.59",
-    "image": "https://itbook.store/img/books/9781491954249.png",
-    "url": "https://itbook.store/books/9781491954249"
-}
-
-const {title, subtitle, image, price} = sample_data
-
 class CartItem extends Component {
     render(){
+        const {cartItemDetails} = this.props
+        const {title, subtitle, image, price} = cartItemDetails
         return (
             <div className = "cart-item-container">
                 <img src={image} alt={title} className="book-image" />
