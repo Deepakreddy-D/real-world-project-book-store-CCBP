@@ -30,7 +30,7 @@ class BookList extends Component {
   }
 
   getPriceRange = (booksData) => {
-    let [minPrice, maxPrice] = [0, 0] 
+    let [minPrice, maxPrice] = [Infinity, 0] // I have updated the minPrice because it will always shows 0 . the condition is wrong.
     booksData.map((eachBook) => {
       const price = parseFloat(eachBook.price.slice(1))
       if (price < minPrice){
